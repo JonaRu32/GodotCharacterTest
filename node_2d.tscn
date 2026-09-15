@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cdmfksuwwjej7"]
 
-[ext_resource type="Texture2D" uid="uid://r1kjsjv6coum" path="res://icon.svg" id="2_0e48y"]
+[ext_resource type="Texture2D" uid="uid://dguqd3cm3wdxb" path="res://assets/pixel-adventure/Background/Green.png" id="1_d21ai"]
 [ext_resource type="Script" uid="uid://wrt1ij58c0bd" path="res://scripts/RanaNinja.gd" id="2_0hol4"]
+[ext_resource type="Texture2D" uid="uid://d1jllsdtolli8" path="res://assets/pixel-adventure/Background/Brown.png" id="2_rj586"]
 [ext_resource type="Texture2D" uid="uid://dde0rwilw5a1k" path="res://assets/pixel-adventure/Main Characters/Ninja Frog/Double Jump (32x32).png" id="3_d21ai"]
 [ext_resource type="Texture2D" uid="uid://bdn24bstyq3c5" path="res://assets/pixel-adventure/Main Characters/Ninja Frog/Fall (32x32).png" id="4_rj586"]
 [ext_resource type="Texture2D" uid="uid://hqm0sqc4ex16" path="res://assets/pixel-adventure/Main Characters/Ninja Frog/Idle (32x32).png" id="5_4d7sh"]
@@ -10,6 +11,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8nfx"]
 size = Vector2(108.125, 25.229166)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5aty5"]
+size = Vector2(66, 61)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d8nfx"]
 radius = 9.0
@@ -267,57 +271,48 @@ position = Vector2(-87, -64)
 scale = Vector2(3, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo" unique_id=312192196]
-position = Vector2(2.6041718, -161.33334)
+position = Vector2(3.0000012, -203.66666)
 shape = SubResource("RectangleShape2D_d8nfx")
 
 [node name="Sprite2D" type="Sprite2D" parent="Suelo" unique_id=214453277]
-position = Vector2(1.6666756, -160.66669)
-scale = Vector2(1.0945017, 0.22756396)
-texture = ExtResource("2_0e48y")
+position = Vector2(2.9999986, -203.66667)
+scale = Vector2(1.1108248, 0.2387822)
+texture = ExtResource("1_d21ai")
 region_enabled = true
 region_rect = Rect2(14.0000305, 13, 97.33334, 104)
 
-[node name="Plataforma1" type="StaticBody2D" parent="." unique_id=826909316]
-position = Vector2(-150, -250)
+[node name="Plataforma" type="StaticBody2D" parent="." unique_id=519843957]
+position = Vector2(440, -554)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma1" unique_id=227189212]
-position = Vector2(613, -588)
-shape = SubResource("RectangleShape2D_d8nfx")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma" unique_id=1018986271]
+position = Vector2(-75.5, -142.75)
+shape = SubResource("RectangleShape2D_5aty5")
 
-[node name="Sprite2D" type="Sprite2D" parent="Plataforma1" unique_id=1175893748]
-position = Vector2(616, -589)
-scale = Vector2(2.1958761, 0.6346153)
-texture = ExtResource("2_0e48y")
-region_enabled = true
-region_rect = Rect2(14.0000305, 13, 97.33334, 104)
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma" unique_id=854651658]
+position = Vector2(-75, -142)
+texture = ExtResource("2_rj586")
 
-[node name="Plataforma3" type="StaticBody2D" parent="." unique_id=1084658296]
-position = Vector2(0, -480)
+[node name="Plataforma2" type="StaticBody2D" parent="." unique_id=1929622336]
+position = Vector2(440, -554)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma3" unique_id=241883586]
-position = Vector2(545, -68.916626)
-shape = SubResource("RectangleShape2D_d8nfx")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma2" unique_id=2096990757]
+position = Vector2(135, -237)
+shape = SubResource("RectangleShape2D_5aty5")
 
-[node name="Sprite2D" type="Sprite2D" parent="Plataforma3" unique_id=350591580]
-position = Vector2(552.5, -61.99997)
-scale = Vector2(2.1958761, 0.6538465)
-texture = ExtResource("2_0e48y")
-region_enabled = true
-region_rect = Rect2(14.0000305, 13, 97.33334, 104)
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma2" unique_id=499762876]
+position = Vector2(135, -236)
+texture = ExtResource("2_rj586")
 
-[node name="Plataforma2" type="StaticBody2D" parent="." unique_id=1569512265]
-position = Vector2(0, -320)
+[node name="Plataforma3" type="StaticBody2D" parent="." unique_id=714017884]
+position = Vector2(440, -554)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma2" unique_id=1373856309]
-position = Vector2(780.5, -346)
-shape = SubResource("RectangleShape2D_d8nfx")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma3" unique_id=1820170351]
+position = Vector2(-98.5, -344.75)
+shape = SubResource("RectangleShape2D_5aty5")
 
-[node name="Sprite2D" type="Sprite2D" parent="Plataforma2" unique_id=1282211726]
-position = Vector2(780.5, -346)
-scale = Vector2(2.1958761, 0.6346153)
-texture = ExtResource("2_0e48y")
-region_enabled = true
-region_rect = Rect2(14.0000305, 13, 97.33334, 104)
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma3" unique_id=674745840]
+position = Vector2(-98, -344)
+texture = ExtResource("2_rj586")
 
 [node name="RanaNinja" type="CharacterBody2D" parent="." unique_id=1709252921]
 position = Vector2(0, -747)
