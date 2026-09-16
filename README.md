@@ -2,6 +2,8 @@
 
 Tarea de **Programación Multimedia (2º DAM)**: partir del ejemplo de clase y añadirle una mecánica. A mí me tocó el **triple salto**.
 
+![Triple salto](docs/triple-salto.gif)
+
 Hecho con **Godot 4.7**. Para probarlo, importa el `project.godot` desde Godot y dale a **F5**.
 
 ## Controles
