@@ -4,10 +4,12 @@
 [ext_resource type="Script" uid="uid://wrt1ij58c0bd" path="res://scripts/RanaNinja.gd" id="2_0hol4"]
 [ext_resource type="Texture2D" uid="uid://d1jllsdtolli8" path="res://assets/pixel-adventure/Background/Brown.png" id="2_rj586"]
 [ext_resource type="Texture2D" uid="uid://dde0rwilw5a1k" path="res://assets/pixel-adventure/Main Characters/Ninja Frog/Double Jump (32x32).png" id="3_d21ai"]
+[ext_resource type="Texture2D" uid="uid://yye15iycs1an" path="res://assets/pixel-adventure/Main Characters/Ninja Frog/Hit (32x32).png" id="4_ir8iy"]
 [ext_resource type="Texture2D" uid="uid://bdn24bstyq3c5" path="res://assets/pixel-adventure/Main Characters/Ninja Frog/Fall (32x32).png" id="4_rj586"]
 [ext_resource type="Texture2D" uid="uid://hqm0sqc4ex16" path="res://assets/pixel-adventure/Main Characters/Ninja Frog/Idle (32x32).png" id="5_4d7sh"]
 [ext_resource type="Texture2D" uid="uid://bvw431akpychb" path="res://assets/pixel-adventure/Main Characters/Ninja Frog/Jump (32x32).png" id="6_ir8iy"]
 [ext_resource type="Texture2D" uid="uid://bo1f5cj1lf1hk" path="res://assets/pixel-adventure/Main Characters/Ninja Frog/Run (32x32).png" id="7_hqns4"]
+[ext_resource type="Texture2D" uid="uid://bj5idjv81nrkw" path="res://assets/pixel-adventure/Background/Purple.png" id="10_ir8iy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8nfx"]
 size = Vector2(108.125, 25.229166)
@@ -46,6 +48,34 @@ region = Rect2(160, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0h7mo"]
 atlas = ExtResource("4_rj586")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fr6y"]
+atlas = ExtResource("4_ir8iy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hxjc"]
+atlas = ExtResource("4_ir8iy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebxd8"]
+atlas = ExtResource("4_ir8iy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u7jv"]
+atlas = ExtResource("4_ir8iy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24dk6"]
+atlas = ExtResource("4_ir8iy")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mryly"]
+atlas = ExtResource("4_ir8iy")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq1c5"]
+atlas = ExtResource("4_ir8iy")
+region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7plk7"]
 atlas = ExtResource("5_4d7sh")
@@ -178,6 +208,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_1fr6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hxjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebxd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u7jv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24dk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mryly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq1c5")
+}],
+"loop": 1,
+"name": &"hit",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7plk7")
 }, {
 "duration": 1.0,
@@ -264,8 +320,11 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ornx7"]
+size = Vector2(64, 64)
+
 [node name="Node2D" type="Node2D" unique_id=1636252120]
-position = Vector2(-87, -64)
+position = Vector2(1208, -4327)
 
 [node name="Suelo" type="StaticBody2D" parent="." unique_id=1939033116]
 scale = Vector2(3, 3)
@@ -327,5 +386,19 @@ zoom = Vector2(3, 3)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RanaNinja" unique_id=486552827]
 sprite_frames = SubResource("SpriteFrames_5aty5")
-animation = &"double_jump"
+animation = &"hit"
 autoplay = "idle"
+
+[node name="ZonaPeligrosa" type="Node2D" parent="." unique_id=1456977967]
+position = Vector2(-107.08777, -691.7456)
+
+[node name="Sprite2D" type="Sprite2D" parent="ZonaPeligrosa" unique_id=283933914]
+texture = ExtResource("10_ir8iy")
+
+[node name="AreaMuerte" type="Area2D" parent="ZonaPeligrosa" unique_id=1261227943]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaPeligrosa/AreaMuerte" unique_id=350092473]
+shape = SubResource("RectangleShape2D_ornx7")
+
+[connection signal="body_entered" from="ZonaPeligrosa/AreaMuerte" to="RanaNinja" method="_on_area_muerte_body_entered"]
+[connection signal="body_exited" from="ZonaPeligrosa/AreaMuerte" to="RanaNinja" method="_on_area_muerte_body_exited"]

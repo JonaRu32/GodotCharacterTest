@@ -4,6 +4,8 @@ const SPEED = 130
 const JUMP_SPEED = -300
 const MAX_JUMPS = 3
 var jumps = 0
+var dano = false
+
 @onready var sprite = $AnimatedSprite2D
 
 
@@ -35,6 +37,9 @@ func _physics_process(delta: float) -> void:
 
 
 func update_animation() -> void:
+	if dano == true:
+		sprite.play("hit")
+		return
 	if is_on_floor():
 		if velocity.x == 0:
 			sprite.play("idle")
@@ -48,3 +53,16 @@ func update_animation() -> void:
 				sprite.play("jump")
 		else:
 			sprite.play("fall")
+	
+
+func _on_area_muerte_body_entered(body: Node2D) -> void:
+	if body == self:
+		print("Estas muriendo")
+		dano = true
+	
+
+
+func _on_area_muerte_body_exited(body: Node2D) -> void:
+	if body == self:
+		print ("Estas a salvo")
+		dano = false
