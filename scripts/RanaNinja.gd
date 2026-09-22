@@ -10,7 +10,7 @@ var death = false
 
 
 func _physics_process(delta: float) -> void:
-	if death == true:
+	if death:
 		update_animation()
 		return
 		
@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 
 func update_animation() -> void:
 	if death == true:
-		sprite.play("hit")
+		sprite.play("desaparecer")
 		return
 	
 	if is_on_floor():
@@ -62,8 +62,7 @@ func update_animation() -> void:
 func _on_pinchos_body_entered(body: Node2D) -> void:
 	print ("Te mueres")
 	death = true
-	await get_tree().create_timer(0.5).timeout
-	get_tree().reload_current_scene()
+	
 	
 	
 	
