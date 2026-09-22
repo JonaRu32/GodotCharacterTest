@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://hqm0sqc4ex16" path="res://assets/pixel-adventure/Main Characters/Ninja Frog/Idle (32x32).png" id="5_4d7sh"]
 [ext_resource type="Texture2D" uid="uid://bvw431akpychb" path="res://assets/pixel-adventure/Main Characters/Ninja Frog/Jump (32x32).png" id="6_ir8iy"]
 [ext_resource type="Texture2D" uid="uid://bo1f5cj1lf1hk" path="res://assets/pixel-adventure/Main Characters/Ninja Frog/Run (32x32).png" id="7_hqns4"]
-[ext_resource type="Texture2D" uid="uid://bj5idjv81nrkw" path="res://assets/pixel-adventure/Background/Purple.png" id="10_ir8iy"]
+[ext_resource type="Texture2D" uid="uid://cq3aejq5k7knl" path="res://assets/pixel-adventure/Traps/Spikes/Idle.png" id="10_ir8iy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8nfx"]
-size = Vector2(108.125, 25.229166)
+size = Vector2(1000, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5aty5"]
 size = Vector2(64, 64)
@@ -320,61 +320,53 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ornx7"]
-size = Vector2(64, 64)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfkbx"]
+size = Vector2(16, 8)
 
 [node name="Node2D" type="Node2D" unique_id=1636252120]
-position = Vector2(1208, -4327)
 
 [node name="Suelo" type="StaticBody2D" parent="." unique_id=1939033116]
-scale = Vector2(3, 3)
+position = Vector2(100, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo" unique_id=312192196]
-position = Vector2(3.0000012, -203.66666)
 shape = SubResource("RectangleShape2D_d8nfx")
 
 [node name="Sprite2D" type="Sprite2D" parent="Suelo" unique_id=214453277]
-position = Vector2(2.9999986, -203.66667)
-scale = Vector2(1.1108248, 0.2387822)
+texture_repeat = 2
 texture = ExtResource("1_d21ai")
 region_enabled = true
-region_rect = Rect2(14.0000305, 13, 97.33334, 104)
+region_rect = Rect2(0, 0, 1000, 64)
 
 [node name="Plataforma" type="StaticBody2D" parent="." unique_id=519843957]
-position = Vector2(440, -554)
+position = Vector2(356, -48)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma" unique_id=1018986271]
-position = Vector2(-75.5, -142.75)
 shape = SubResource("RectangleShape2D_5aty5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Plataforma" unique_id=854651658]
-position = Vector2(-75, -142)
 texture = ExtResource("2_rj586")
 
 [node name="Plataforma2" type="StaticBody2D" parent="." unique_id=1929622336]
-position = Vector2(440, -554)
+position = Vector2(566, -142)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma2" unique_id=2096990757]
-position = Vector2(135, -237)
 shape = SubResource("RectangleShape2D_5aty5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Plataforma2" unique_id=499762876]
-position = Vector2(135, -236)
 texture = ExtResource("2_rj586")
 
 [node name="Plataforma3" type="StaticBody2D" parent="." unique_id=714017884]
-position = Vector2(440, -554)
+position = Vector2(332, -250)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma3" unique_id=1820170351]
-position = Vector2(-98.5, -344.75)
 shape = SubResource("RectangleShape2D_5aty5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Plataforma3" unique_id=674745840]
-position = Vector2(-98, -344)
 texture = ExtResource("2_rj586")
 
 [node name="RanaNinja" type="CharacterBody2D" parent="." unique_id=1709252921]
-position = Vector2(0, -747)
+position = Vector2(-9, -40)
+collision_layer = 2
 script = ExtResource("2_0hol4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RanaNinja" unique_id=2095552460]
@@ -389,16 +381,16 @@ sprite_frames = SubResource("SpriteFrames_5aty5")
 animation = &"hit"
 autoplay = "idle"
 
-[node name="ZonaPeligrosa" type="Node2D" parent="." unique_id=1456977967]
-position = Vector2(-107.08777, -691.7456)
+[node name="Pinchos" type="Area2D" parent="." unique_id=1661925877]
+position = Vector2(-200, -8)
+collision_layer = 4
+collision_mask = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="ZonaPeligrosa" unique_id=283933914]
+[node name="Sprite2D" type="Sprite2D" parent="Pinchos" unique_id=2146324492]
 texture = ExtResource("10_ir8iy")
 
-[node name="AreaMuerte" type="Area2D" parent="ZonaPeligrosa" unique_id=1261227943]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pinchos" unique_id=1158719609]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_lfkbx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaPeligrosa/AreaMuerte" unique_id=350092473]
-shape = SubResource("RectangleShape2D_ornx7")
-
-[connection signal="body_entered" from="ZonaPeligrosa/AreaMuerte" to="RanaNinja" method="_on_area_muerte_body_entered"]
-[connection signal="body_exited" from="ZonaPeligrosa/AreaMuerte" to="RanaNinja" method="_on_area_muerte_body_exited"]
+[connection signal="body_entered" from="Pinchos" to="RanaNinja" method="_on_pinchos_body_entered"]

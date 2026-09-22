@@ -35,6 +35,13 @@ der={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="mundo"
+2d_physics/layer_2="jugador"
+2d_physics/layer_3="trampas"
+2d_physics/layer_4="objetos"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
