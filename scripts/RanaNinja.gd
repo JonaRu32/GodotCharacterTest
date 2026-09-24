@@ -5,12 +5,14 @@ const JUMP_SPEED = -300
 const MAX_JUMPS = 3
 var jumps = 0
 var death = false
+var apareciendo = true
+
 
 @onready var sprite = $AnimatedSprite2D
 
 
 func _physics_process(delta: float) -> void:
-	if death:
+	if death == true or apareciendo:
 		update_animation()
 		return
 		
@@ -38,10 +40,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	update_animation() 
 
+func _ready() -> void:
+	sprite.play("aparecer")
+	
 
 func update_animation() -> void:
-	if death == true:
-		sprite.play("desaparecer")
+	if death == true or apareciendo:
 		return
 	
 	if is_on_floor():
@@ -62,7 +66,12 @@ func update_animation() -> void:
 func _on_pinchos_body_entered(body: Node2D) -> void:
 	print ("Te mueres")
 	death = true
+	sprite.play("desaparecer")
 	
-	
-	
-	
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if sprite.animation == "desaparecer":
+		get_tree().reload_current_scene()
+	elif sprite.animation == "aparecer":
+		apareciendo = false
+		
+		

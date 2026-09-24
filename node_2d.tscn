@@ -488,7 +488,7 @@ zoom = Vector2(3, 3)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RanaNinja" unique_id=486552827]
 sprite_frames = SubResource("SpriteFrames_5aty5")
-animation = &"desaparecer"
+animation = &"aparecer"
 autoplay = "idle"
 
 [node name="Pinchos" type="Area2D" parent="." unique_id=1661925877]
@@ -503,4 +503,5 @@ texture = ExtResource("10_ir8iy")
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_lfkbx")
 
+[connection signal="animation_finished" from="RanaNinja/AnimatedSprite2D" to="RanaNinja" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Pinchos" to="RanaNinja" method="_on_pinchos_body_entered"]
